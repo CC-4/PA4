@@ -54,8 +54,8 @@ class ClassTable {
         //        type_name() : Str        returns a string representation
         //                                 of class name
         //        copy() : SELF_TYPE       returns a copy of the object
-        class_ Object_class =
-            new class_(0,
+        class_c Object_class =
+            new class_c(0,
                     TreeConstants.Object_,
                     TreeConstants.No_class,
                     new Features(0)
@@ -81,15 +81,15 @@ class ClassTable {
         //        out_int(Int) : SELF_TYPE      "    an int    "  "     "
         //        in_string() : Str            reads a string from the input
         //        in_int() : Int                "   an int     "  "     "
-        class_ IO_class =
-            new class_(0,
+        class_c IO_class =
+            new class_c(0,
                     TreeConstants.IO,
                     TreeConstants.Object_,
                     new Features(0)
                     .appendElement(new method(0,
                               TreeConstants.out_string,
                               new Formals(0)
-                              .appendElement(new formal(0,
+                              .appendElement(new formalc(0,
                                          TreeConstants.arg,
                                          TreeConstants.Str)),
                               TreeConstants.SELF_TYPE,
@@ -97,7 +97,7 @@ class ClassTable {
                     .appendElement(new method(0,
                               TreeConstants.out_int,
                               new Formals(0)
-                              .appendElement(new formal(0,
+                              .appendElement(new formalc(0,
                                          TreeConstants.arg,
                                          TreeConstants.Int)),
                               TreeConstants.SELF_TYPE,
@@ -117,8 +117,8 @@ class ClassTable {
         // The Int class has no methods and only a single attribute, the
         // "val" for the integer.
 
-        class_ Int_class =
-            new class_(0,
+        class_c Int_class =
+            new class_c(0,
                     TreeConstants.Int,
                     TreeConstants.Object_,
                     new Features(0)
@@ -129,8 +129,8 @@ class ClassTable {
                     filename);
 
         // Bool also has only the "val" slot.
-        class_ Bool_class =
-            new class_(0,
+        class_c Bool_class =
+            new class_c(0,
                     TreeConstants.Bool,
                     TreeConstants.Object_,
                     new Features(0)
@@ -146,8 +146,8 @@ class ClassTable {
         //       length() : Int                   returns length of the string
         //       concat(arg: Str) : Str           performs string concatenation
         //       substr(arg: Int, arg2: Int): Str substring selection
-        class_ Str_class =
-            new class_(0,
+        class_c Str_class =
+            new class_c(0,
                    TreeConstants.Str,
                     TreeConstants.Object_,
                     new Features(0)
@@ -167,7 +167,7 @@ class ClassTable {
                     .appendElement(new method(0,
                               TreeConstants.concat,
                               new Formals(0)
-                              .appendElement(new formal(0,
+                              .appendElement(new formalc(0,
                                          TreeConstants.arg,
                                          TreeConstants.Str)),
                               TreeConstants.Str,
@@ -175,10 +175,10 @@ class ClassTable {
                     .appendElement(new method(0,
                               TreeConstants.substr,
                               new Formals(0)
-                              .appendElement(new formal(0,
+                              .appendElement(new formalc(0,
                                          TreeConstants.arg,
                                          TreeConstants.Int))
-                              .appendElement(new formal(0,
+                              .appendElement(new formalc(0,
                                          TreeConstants.arg2,
                                          TreeConstants.Int)),
                               TreeConstants.Str,
@@ -204,7 +204,7 @@ class ClassTable {
      * to be printed.
      *
      * */
-    public PrintStream semantError(class_ c) {
+    public PrintStream semantError(class_c c) {
         return semantError(c.getFilename(), c);
     }
 
